@@ -13,6 +13,9 @@ PECO_VERSION           := 0.5.3
 setup:
 	@GO111MODULE=off \
 		go get github.com/Songmu/make2help/cmd/make2help
+	sudo apt-get install git
+	sudo apt-get install vim
+	git config --global core.editor vim
 
 .PHONY: help
 ## show help
@@ -22,7 +25,6 @@ help: setup
 .PHONY: install-git
 ## install git
 install-git:
-	sudo apt-get install git
 
 
 .PHONY: install-docker
@@ -42,6 +44,10 @@ install-docker:
 		$(lsb_release -cs) \
 		stable"
 
+	sudo apt-get update \
+		 sudo apt-get install docker-ce docker-ce-cli containerd.io
+		 
+	sudo gpasswd -a $USER docker
 
 .PHONY: install-docker-compose
 ## install docker-compose
