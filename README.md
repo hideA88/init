@@ -46,4 +46,10 @@ sudo apt install google-chrome-stable
   - vscodeのインストール
   - gitkraken
   
-6. 
+6. GNOME Tweak のインストール
+  ubuntuソフトウェアから検索してインストール
+  
+  
+7. 新しいubuntuテーマをインストール
+
+8. 
