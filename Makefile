@@ -11,20 +11,30 @@ PECO_VERSION           := 0.5.3
 
 .PHONY: setup
 setup:
-	@GO111MODULE=off \
-		go get github.com/Songmu/make2help/cmd/make2help
 	sudo apt-get install git
 	sudo apt-get install vim
+	sudo apt-get install curl
 	git config --global core.editor vim
 
 .PHONY: help
 ## show help
-help: setup
+help:
+	@GO111MODULE=off \
+		go get github.com/Songmu/make2help/cmd/make2help
 	@make2help $(MAKE_LIST)
 
 .PHONY: install-git
 ## install git
 install-git:
+
+
+.PHONY: install-albert
+## install git
+install-albert:
+	curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add - ;\
+		sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"; \
+	sudo apt-get update; \
+	sudo apt-get install albert
 
 
 .PHONY: install-docker
@@ -46,7 +56,7 @@ install-docker:
 
 	sudo apt-get update \
 		 sudo apt-get install docker-ce docker-ce-cli containerd.io
-		 
+
 	sudo gpasswd -a $USER docker
 
 .PHONY: install-docker-compose
