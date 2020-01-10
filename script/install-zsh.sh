@@ -21,12 +21,9 @@ done
 chsh -s $(which zsh);
 
 rm ~/.zshrc
-cp $CURENT_DIR/.zshrc ~/.zshrc
+ln -s $CURENT_DIR/.zshrc ~/.zshrc
 
 rm ~/.zpreztorc
-cp $CURENT_DIR/.zpreztorc ~/.zpreztorc
-
-
-
+ln -s $CURENT_DIR/.zpreztorc ~/.zpreztorc
 
 source ~/.zshrc

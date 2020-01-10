@@ -3,11 +3,14 @@
 setup:
 	sudo apt install git
 	sudo apt install vim
+	rm ~/.vimrc
+	ln -s $(shell pwd)/.vimrc ~/.vimrc
 	sudo apt install curl
 	sudo apt install direnv
 	sudo apt install jq
 	sudo apt install zsh
 	git config --global core.editor vim
+	sudo apt install -y fonts-roboto fonts-noto fonts-ricty-diminished
 	# docker上のwebpackでエラーにならないようにするため
 	echo fs.inotify.max_user_watches=524288|sudo tee -a /etc/sysctl.conf && \
 		sudo sysctl -p;
@@ -64,4 +67,5 @@ install-peco:
 ## install awsenv
 install-awsenv:
 	pip install awscli
-	git clone git@github.com:buzztaiki/awsenv.git /usr/local/bin/awsenv
+	git clone https://github.com/buzztaiki/awsenv.git ~/lib/awsenv
+	sudo cp ~/lib/awsenv/awsenv /usr/local/bin

@@ -1,7 +1,7 @@
 #!/bin/zsh
 NODE_VERSION=12.14.1
 RUBY_VERSION=2.6.4
-PYTHON_VERSION=3.7.4
+PYTHON_VERSION=3.8.1
 GO_VERSION=1.13.5
 
 
@@ -25,8 +25,13 @@ source ~/.zshrc
 nodenv install ${NODE_VERSION}
 nodenv global ${NODE_VERSION}
 
+
+sudo mkdir /usr/local/opt
+sudo chown -R ${USER}:${USER} /usr/local/opt
+
 ## install pyenv
 ## これやらないとinstallコマンドが表示されない
+sudo apt install libffi-dev
 sudo ~/.anyenv/envs/pyenv/plugins/python-build/install.sh
 pyenv install ${PYTHON_VERSION}
 pyenv global  ${PYTHON_VERSION}
