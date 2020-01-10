@@ -45,11 +45,11 @@ sudo apt install google-chrome-stable
   - slackのインストール
   - vscodeのインストール
   - gitkraken
-  
+
 6. GNOME Tweak のインストール
   ubuntuソフトウェアから検索してインストール
-  
-  
+
+
 7. 新しいubuntuテーマをインストール
 
-8. 
+8. インストールスクリプトの実行

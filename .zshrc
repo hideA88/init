@@ -52,16 +52,13 @@ bindkey '^]' peco-src
 
 
 ### for node
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
-
-### for npm install command
-export PATH="`npm bin -g`:$PATH"
+export NODENV_HOME=$HOME/.anyenv/envs/nodenv
+export PATH="$NODENV_HOME/shims:$PATH"
+#eval "$(nodenv init -)"
+#export PATH="`npm bin -g`:$PATH"
 
 ### for python
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
 eval "$(pyenv init -)"
-
-

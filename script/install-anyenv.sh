@@ -18,6 +18,7 @@ anyenv install nodenv
 anyenv install pyenv
 anyenv install rbenv
 anyenv install goenv
+anyenv install tfenv
 
 source ~/.zshrc
 
@@ -44,3 +45,7 @@ rbenv global ${RUBY_VERSION}
 ## install goenv
 goenv install ${GO_VERSION}
 goenv global ${GO_VERSION}
+
+
+## install tfenv
+tfenv install

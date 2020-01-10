@@ -1,19 +1,8 @@
 
 .PHONY: setup
 setup:
-	sudo apt install git
-	sudo apt install vim
-	rm ~/.vimrc
-	ln -s $(shell pwd)/.vimrc ~/.vimrc
-	sudo apt install curl
-	sudo apt install direnv
-	sudo apt install jq
-	sudo apt install zsh
-	git config --global core.editor vim
-	sudo apt install -y fonts-roboto fonts-noto fonts-ricty-diminished
-	# docker上のwebpackでエラーにならないようにするため
-	echo fs.inotify.max_user_watches=524288|sudo tee -a /etc/sysctl.conf && \
-		sudo sysctl -p;
+	chmod +x ./script/setup.sh
+	./script/setup.sh
 
 .PHONY: help
 ## show help
@@ -25,11 +14,6 @@ help:
 
 .PHONY: install-albert
 install-albert:
-	curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add - ;\
-		sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"; \
-	sudo apt-get update; \
-	sudo apt-get install albert
-
 .PHONY: install-zsh
 install-zsh:
 	chmod +x ./script/install-zsh.sh
@@ -63,9 +47,7 @@ install-peco:
 	./script/install-peco.sh
 
 
-.PHONY: install-awsenv
-## install awsenv
-install-awsenv:
-	pip install awscli
-	git clone https://github.com/buzztaiki/awsenv.git ~/lib/awsenv
-	sudo cp ~/lib/awsenv/awsenv /usr/local/bin
+.PHONY: install-dev-tools
+:install-dev-tools
+	chmod +x ./script/setup-dev.sh
+	./script/setup-dev.sh
