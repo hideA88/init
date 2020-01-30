@@ -12,9 +12,6 @@ fi
 
 # Customize to your needs...
 
-### for general
-alias vi='vim'
-
 eval "$(direnv hook zsh)"
 
 export PATH="$HOME/.anyenv/bin:$PATH"
@@ -29,7 +26,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 ### for golang
 
-export PATH="$HOME/.goenv/bin:$PATH"
 export GOENV_DISABLE_GOPATH=1
 eval "$(goenv init -)"
 
@@ -58,7 +54,21 @@ export PATH="$NODENV_HOME/shims:$PATH"
 #export PATH="`npm bin -g`:$PATH"
 
 ### for python
-export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_ROOT=$HOME/.anyenv/envs/pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"
 
 eval "$(pyenv init -)"
+
+### for flutter
+export FLUTTER_HOME="$HOME/lib/flutter"
+export PATH="$FLUTTER_HOME/bin:$PATH"
+
+### for vim
+export VIM_HOME=/usr/local/Cellar/vim/8.2.0100/bin/
+export PATH=$VIM_HOME/vim:$PATH
+alias vi='$VIM_HOME/vim'
+
+
+#
+
+export PATH=/usr/local/bin:$PATH

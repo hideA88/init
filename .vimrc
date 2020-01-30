@@ -11,6 +11,8 @@ set autoread
 set hidden
 " " 入力中のコマンドをステータスに表示する
 set showcmd
+" " ヤンクをクリップボードにコピー
+set clipboard+=unnamed
 
 
 " 見た目系
@@ -38,7 +40,7 @@ nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 
-colorscheme evening
+colorscheme jellybeans
 
 
 " Tab系
