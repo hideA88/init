@@ -21,7 +21,7 @@ done
 chsh -s $(which zsh);
 
 rm ~/.zshrc
-ln -s $CURENT_DIR/.zshrc ~/.zshrc
+ln -s $CURENT_DIR/ubuntu.zshrc ~/.zshrc
 
 rm ~/.zpreztorc
 ln -s $CURENT_DIR/.zpreztorc ~/.zpreztorc
