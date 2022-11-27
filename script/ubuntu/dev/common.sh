@@ -1,9 +1,11 @@
 #!/bin/bash
 
+CUR_DIR=`pwd`
+
 ## vim
 sudo apt install vim
 rm ~/.vimrc
-ln -s $(shell pwd)/.vimrc ~/.vimrc
+ln -s $CUR_DIR/.vimrc ~/.vimrc
 git config --global core.editor vim
 mkdir ~/.vim
 mkdir ~/.vim/colors
@@ -11,7 +13,7 @@ curl -O https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/
 
 ## font
 sudo apt install -y fonts-roboto fonts-noto fonts-ricty-diminished
-sudo apt install 
+sudo apt install fontconfig
 
 mkdir ./tmp
 cd ./tmp
