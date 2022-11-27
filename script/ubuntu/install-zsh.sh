@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-
 CURENT_DIR=`pwd`
 
 if [ -z "`ls ${ZDOTDIR:-$HOME}/.zprezto`" ]; then
@@ -19,9 +18,6 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
 done
 
 chsh -s $(which zsh);
-
-rm ~/.zshrc
-ln -s $CURENT_DIR/ubuntu.zshrc ~/.zshrc
 
 rm ~/.zpreztorc
 ln -s $CURENT_DIR/.zpreztorc ~/.zpreztorc
