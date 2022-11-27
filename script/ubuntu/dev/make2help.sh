@@ -5,6 +5,7 @@ which make2help >/dev/null 2>&1
 if [ $? = 0 ]; then
     exit 0
 fi 
+sudo apt install jq
 
 CUR_DIR=`pwd`
 
