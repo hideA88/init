@@ -53,6 +53,10 @@ install-peco:
 install-dev-tools:
 	chmod +x ./script/${SCRIPT_DIR}/dev/common.sh
 	./script/${SCRIPT_DIR}/dev/common.sh
+
+.PHONY: install-cloud-cli
+## install cloud cli.
+install-cloud-cli:
 	chmod +x ./script/${SCRIPT_DIR}/dev/cloud-cli.sh
 	./script/${SCRIPT_DIR}/dev/cloud-cli.sh
 
