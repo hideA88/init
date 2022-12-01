@@ -6,8 +6,8 @@ endif
 
 .PHONY: init
 init:
-	chmod +x ./script/bash/common/make2help.sh
-	./script/bash/common/make2help.sh
+	chmod +x ./install-script/bash/common/make2help.sh
+	./install-script/bash/common/make2help.sh
 
 .PHONY: help
 ## show help
@@ -17,61 +17,60 @@ help: init
 .PHONY: setup
 ## setup basic tools. run first this.
 setup:
-	chmod +x ./script/bash/common/setup.sh
-	./script/bash/common/setup.sh
+	chmod +x ./install-script/bash/common/setup.sh
+	./install-script/bash/common/setup.sh
 
 .PHONY: install-fish
 ## install and set init shell to fish or update
 install-fish:
-	chmod +x ./script/bash/common/install-fish.sh
-	./script/bash/common/install-fish.sh
+	chmod +x ./install-script/bash/common/fish.sh
+	./install-script/bash/common/fish.sh
 
 .PHONY: install-fisher
 ## install or update fisher and plugins
 install-fisher:
-	chmod +x ./script/fish/install-fisher.fish
-	./script/fish/install-fisher.fish
-
+	chmod +x ./install-script/fish/fisher.fish
+	./install-script/fish/fisher.fish
 
 .PHONY: install-anyenv
 ## install anyenv and XXXenv. 
 install-anyenv:
-	chmod +x ./script/fish/install-anyenv.fish
-	./script/fish/install-anyenv.fish
+	chmod +x ./install-script/fish/anyenv.fish
+	./install-script/fish/anyenv.fish
 
 .PHONY: install-peco
 ## install peco & ghq
 install-peco:
-	chmod +x ./script/bash/common/install-peco.sh
-	./script/bash/common/install-peco.sh
+	chmod +x ./install-script/bash/common/peco.sh
+	./install-script/bash/common/peco.sh
 
 
 .PHONY: install-docker
 ## install docker& docker-comopse
 install-docker:
-	chmod +x ./script/${SCRIPT_DIR}/install-docker.sh
-	./script/${SCRIPT_DIR}/install-docker.sh
+	chmod +x ./install-script/bash/dev/docker.sh
+	./install-script/bash/dev/docker.sh
 
 .PHONY: install-dev-tools
 ## install dev-tools.
 install-dev-tools:
-	chmod +x ./script/${SCRIPT_DIR}/dev/common.sh
-	./script/${SCRIPT_DIR}/dev/common.sh
+	chmod +x ./install-script/bash/dev/common.sh
+	./install-script/bash/dev/common.sh
 
 .PHONY: install-cloud-cli
 ## install cloud cli.
 install-cloud-cli:
-	chmod +x ./script/${SCRIPT_DIR}/dev/cloud-cli.sh
-	./script/${SCRIPT_DIR}/dev/cloud-cli.sh
+	chmod +x ./install-script/bash/dev/cloud-cli.sh
+	./install-script/bash/dev/cloud-cli.sh
 
 .PHONY: install-gui-tools
 ## install gui-tools
 install-gui-tools:
-	chmod +x ./script/${SCRIPT_DIR}/install-gui-tools.sh
-	./script/${SCRIPT_DIR}/install-gui-tools.sh
+	chmod +x ./install-script/bash/gui/gui-tools.sh
+	./install-script/bash/gui/gui-tools.sh
 
 .PHONY: install-npm-tools
 ## install npm-tools.
 install-npm-tools:
-	chmod +x ./script/${SCRIPT_DIR}/dev/npm.sh
-	./script/${SCRIPT_DIR}/dev/npm.sh
+	chmod +x ./install-script/bash/dev/npm.sh
+	./install-script/bash/dev/npm.sh
