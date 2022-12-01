@@ -40,7 +40,7 @@ nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 
-colorscheme jellybeans
+colorscheme lucius
 
 
 " Tab系
