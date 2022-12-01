@@ -51,11 +51,11 @@ install-docker:
 	chmod +x ./install-script/bash/dev/docker.sh
 	./install-script/bash/dev/docker.sh
 
-.PHONY: install-dev-tools
-## install dev-tools.
-install-dev-tools:
-	chmod +x ./install-script/bash/dev/common.sh
-	./install-script/bash/dev/common.sh
+.PHONY: install-vim
+## install vim and vimrc.
+install-vim:
+	chmod +x ./install-script/bash/common/vim.sh
+	./install-script/bash/common/vim.sh
 
 .PHONY: install-cloud-cli
 ## install cloud cli.
