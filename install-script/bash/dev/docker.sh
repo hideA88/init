@@ -14,6 +14,7 @@ fi
 
 # dockerのリポジトリが追加されていなければ追加
 if [ ! -f /etc/apt/keyrings/docker.gpg ]; then
+  echo "add docker repository"
   sudo mkdir -p /etc/apt/keyrings
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
@@ -32,30 +33,36 @@ ORG="docker"
 REPO="compose"
 LATEST_VERSION=`curl -s https://api.github.com/repos/${ORG}/${REPO}/releases/latest| jq -r .tag_name`
 
+
+function install_docker_compose() {
+  mkdir -p ~/tmp
+  cd ~/tmp
+
+  echo "try install docker-compose $LATEST_VERSION"
+  TARGET="docker-compose-linux-x86_64"
+  wget "https://github.com/${ORG}/${REPO}/releases/download/${LATEST_VERSION}/${TARGET}"
+
+  mv $TARGET docker-compose
+  chmod +x docker-compose
+  sudo cp docker-compose /usr/local/bin
+
+  cd ${CUR_DIR}
+  sudo rm -rf ~/tmp
+}
+
 # すでに存在している場合はインストールしない(whichコマンドの結果で存在確認)
 which docker-compose >/dev/null 2>&1
 if [ $? = 0 ]; then
   DC_VERSION=`docker-compose -v|awk '{print $4}'`
   if [ $LATEST_VERSION = $DC_VERSION ]; then
     # install skip
-    echo "docker compose latest version already installed"
-    exit 0
+    echo "docker-compose latest version already installed"
   else
     DC_PATH=`which docker-compose`
     rm -rf $DC_PATH
+    install_docker_compose
   fi
+else
+  install_docker_compose
 fi
 
-mkdir -p ~/tmp
-cd ~/tmp
-
-echo "try install docker-compose $LATEST_VERSION"
-TARGET="docker-compose-linux-x86_64"
-wget "https://github.com/${ORG}/${REPO}/releases/download/${LATEST_VERSION}/${TARGET}"
-
-mv $TARGET docker-compose
-chmod +x docker-compose
-sudo cp docker-compose /usr/local/bin
-
-cd ${CUR_DIR}
-sudo rm -rf ~/tmp
