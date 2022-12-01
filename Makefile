@@ -1,5 +1,3 @@
-
-
 ifeq ($(shell uname), Darwin)
   SCRIPT_DIR := mac
 else
@@ -8,8 +6,8 @@ endif
 
 .PHONY: init
 init:
-	chmod +x ./script/${SCRIPT_DIR}/dev/make2help.sh
-	./script/${SCRIPT_DIR}/dev/make2help.sh
+	chmod +x ./script/bash/common/make2help.sh
+	./script/bash/common/make2help.sh
 
 .PHONY: help
 ## show help
@@ -19,34 +17,40 @@ help: init
 .PHONY: setup
 ## setup basic tools. run first this.
 setup:
-	chmod +x ./script/${SCRIPT_DIR}/setup.sh
-	./script/${SCRIPT_DIR}/setup.sh
+	chmod +x ./script/bash/common/setup.sh
+	./script/bash/common/setup.sh
 
-.PHONY: install-zsh
-## setup zsh color and set init shell to zsh
-install-zsh:
-	chmod +x ./script/${SCRIPT_DIR}/install-zsh.sh
-	./script/${SCRIPT_DIR}/install-zsh.sh
+.PHONY: install-fish
+## install and set init shell to fish or update
+install-fish:
+	chmod +x ./script/bash/common/install-fish.sh
+	./script/bash/common/install-fish.sh
+
+.PHONY: install-fisher
+## install or update fisher and plugins
+install-fisher:
+	chmod +x ./script/fish/install-fisher.fish
+	./script/fish/install-fisher.fish
+
+
+.PHONY: install-anyenv
+## install anyenv and XXXenv. 
+install-anyenv:
+	chmod +x ./script/fish/install-anyenv.fish
+	./script/fish/install-anyenv.fish
+
+.PHONY: install-peco
+## install peco & ghq
+install-peco:
+	chmod +x ./script/bash/common/install-peco.sh
+	./script/bash/common/install-peco.sh
+
 
 .PHONY: install-docker
 ## install docker& docker-comopse
 install-docker:
 	chmod +x ./script/${SCRIPT_DIR}/install-docker.sh
 	./script/${SCRIPT_DIR}/install-docker.sh
-
-
-.PHONY: install-anyenv
-## install anyenv and XXXenv. 
-install-anyenv:
-	chmod +x ./script/${SCRIPT_DIR}/install-anyenv.sh
-	./script/${SCRIPT_DIR}/install-anyenv.sh
-
-
-.PHONY: install-peco
-## install peco & ghq
-install-peco:
-	chmod +x ./script/${SCRIPT_DIR}/install-peco.sh
-	./script/${SCRIPT_DIR}/install-peco.sh
 
 .PHONY: install-dev-tools
 ## install dev-tools.

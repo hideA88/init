@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 CUR_DIR=`pwd`
 
@@ -24,7 +24,7 @@ if [ $? = 1 ]; then
 
     cd ${CUR_DIR}
     sudo rm -rf ~/tmp
-    read "workPath?input workspace path: " 
+    read -p "input workspace path: " workPath
     git config --global ghq.root $workPath/src
 else
     echo "ghq already installed"
@@ -34,17 +34,16 @@ fi
 sudo apt install peco
 
 ### zshrcに追記されていなければ追記する
-if [ -z "`grep "###\sfor\speco" ~/.zshrc`" ]; then \
+if [ -z "`grep "###\sfor\speco" ~/.config/fish/config.fish`" ]; then \
+    echo "write peco env to ~/.config/fish/config.fish"
     ## 最終行を取得しておいて、あとで最終行についき
-    last=`tail -1 ~/.zshrc`
-    sed -i -e '$d' ~/.zshrc
-
-    echo '### for peco' >> ~/.zshrc
-    echo 'source ${iniDir}/zshrc/peco.zshrc' >> ~/.zshrc
-    echo -n -e "\n" >> ~/.zshrc #空行の追加
-
-    echo ${last} >> ~/.zshrc
-    source ~/.zshrc
+    echo '### for peco' >> ~/.config/fish/config.fish
+    echo 'function fish_user_key_bindings' >> ~/.config/fish/config.fish
+    echo '  bind \cr peco_select_history #Ctrl+r でコマンド履歴' >> ~/.config/fish/config.fish
+    echo '  bind \c] peco_select_ghq_repository #Ctrl+] でrepositoryのlist' >> ~/.config/fish/config.fish
+    echo '  bind \ck peco_kill #Ctrl+k でprocessのkill' >> ~/.config/fish/config.fish 
+    echo 'end' >> ~/.config/fish/config.fish
+    echo -n -e "\n" >> ~/.config/fish/config.fish #空行の追加
 else 
     echo "already writing peco env"
 fi

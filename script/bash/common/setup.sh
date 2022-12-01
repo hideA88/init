@@ -3,7 +3,6 @@
 sudo apt install git
 sudo apt install curl
 sudo apt install jq
-sudo apt install zsh
 sudo apt install unzip
 sudo apt install direnv
 
