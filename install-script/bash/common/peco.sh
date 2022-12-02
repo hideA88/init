@@ -33,10 +33,9 @@ fi
 ### install peco
 sudo apt install peco
 
-### zshrcに追記されていなければ追記する
+### fish configに追記されていなければ追記する
 if [ -z "`grep "###\sfor\speco" ~/.config/fish/config.fish`" ]; then \
     echo "write peco env to ~/.config/fish/config.fish"
-    ## 最終行を取得しておいて、あとで最終行についき
     echo '### for peco' >> ~/.config/fish/config.fish
     echo 'function fish_user_key_bindings' >> ~/.config/fish/config.fish
     echo '  bind \cr peco_select_history #Ctrl+r でコマンド履歴' >> ~/.config/fish/config.fish
