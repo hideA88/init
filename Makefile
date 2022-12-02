@@ -48,7 +48,7 @@ install-peco:
 .PHONY: install-docker
 ## install docker& docker-comopse
 install-docker:
-	chmod +x ./install-script/bash/dev/docker.sh
+	chmod +x ./install-script/bash/common/docker.sh
 	./install-script/bash/dev/docker.sh
 
 .PHONY: install-vim
@@ -60,7 +60,7 @@ install-vim:
 .PHONY: install-cloud-cli
 ## install cloud cli.
 install-cloud-cli:
-	chmod +x ./install-script/bash/dev/cloud-cli.sh
+	chmod +x ./install-script/bash/common/cloud-cli.sh
 	./install-script/bash/dev/cloud-cli.sh
 
 .PHONY: install-gui-tools
