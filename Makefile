@@ -20,6 +20,10 @@ setup:
 	chmod +x ./install-script/bash/common/setup.sh
 	./install-script/bash/common/setup.sh
 
+.PHONY: install-common
+## install all common tools.
+install-common: setup install-fish install-fisher install-anyenv install-peco install-docker install-vim install-cloud-cli
+
 .PHONY: install-fish
 ## install and set init shell to fish or update
 install-fish:
@@ -49,7 +53,7 @@ install-peco:
 ## install docker& docker-comopse
 install-docker:
 	chmod +x ./install-script/bash/common/docker.sh
-	./install-script/bash/dev/docker.sh
+	./install-script/bash/common/docker.sh
 
 .PHONY: install-vim
 ## install vim and vimrc.
@@ -61,13 +65,19 @@ install-vim:
 ## install cloud cli.
 install-cloud-cli:
 	chmod +x ./install-script/bash/common/cloud-cli.sh
-	./install-script/bash/dev/cloud-cli.sh
+	./install-script/bash/common/cloud-cli.sh
 
 .PHONY: install-gui-tools
 ## install gui-tools
 install-gui-tools:
 	chmod +x ./install-script/bash/gui/gui-tools.sh
 	./install-script/bash/gui/gui-tools.sh
+
+.PHONY: install-program-lang
+## install install-program-lang.
+install-program-lang:
+	chmod +x ./install-script/bash/dev/program-lang.sh
+	./install-script/bash/dev/program-lang.sh
 
 .PHONY: install-npm-tools
 ## install npm-tools.
