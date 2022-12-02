@@ -28,17 +28,3 @@ if not grep "$cmmd" ~/.config/fish/config.fish >/dev/null 2>&1
     echo "" >> ~/.config/fish/config.fish
 end 
 
-#nodenv install ${NODE_VERSION}
-#nodenv global ${NODE_VERSION}
-#
-#sudo mkdir /usr/local/opt
-#sudo chown -R ${USER}:${USER} /usr/local/opt
-#
-### install rbenv
-#sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
-#rbenv install ${RUBY_VERSION}
-#rbenv global ${RUBY_VERSION}
-#
-### install goenv
-#goenv install ${GO_VERSION}
-#goenv global ${GO_VERSION}
