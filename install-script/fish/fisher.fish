@@ -1,7 +1,8 @@
 #!/bin/fish
 
 fisher -v >/dev/null 2>&1
-if test "$status" = "1" 
+if test "$status" != "0" 
+    echo "install fisher"
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
     sudo apt-get install fonts-powerline
 else 
