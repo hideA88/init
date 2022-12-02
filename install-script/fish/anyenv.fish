@@ -19,9 +19,10 @@ else
 end
 
 ## config.fishへの書き込み
-set cmmd "status --is-interactive; and source (anyenv init -|psub)"
+set cmmd "status --is-interactive; and bass source (anyenv init -|psub)"
 if not grep "$cmmd" ~/.config/fish/config.fish >/dev/null 2>&1
     echo "write to anyenv init setting to ~/.config/fish/config.fish"
+    echo "" >> ~/.config/fish/config.fish
     echo "### for anyenv" >> ~/.config/fish/config.fish
     echo $cmmd >> ~/.config/fish/config.fish
     echo "" >> ~/.config/fish/config.fish
