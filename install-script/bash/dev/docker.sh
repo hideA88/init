@@ -12,6 +12,7 @@ if [ $? = 1 ]; then
     lsb-release
 fi
 
+### docker install
 # dockerのリポジトリが追加されていなければ追加
 if [ ! -f /usr/share/keyrings/docker.gpg ]; then
   echo "install docker repo keyring"
@@ -29,7 +30,7 @@ fi
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-# docker-compose install v2 
+### docker-compose install v2 
 ORG="docker"
 REPO="compose"
 LATEST_VERSION=`curl -s https://api.github.com/repos/${ORG}/${REPO}/releases/latest| jq -r .tag_name`
@@ -60,7 +61,7 @@ if [ $? = 0 ]; then
     echo "docker-compose latest version already installed"
   else
     DC_PATH=`which docker-compose`
-    rm -rf $DC_PATH
+    sudo rm -rf $DC_PATH
     install_docker_compose
   fi
 else
