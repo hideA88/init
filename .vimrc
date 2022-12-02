@@ -37,10 +37,12 @@ set wildmode=list:longest
 " 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
+
+set background=dark
 " シンタックスハイライトの有効化
 syntax enable
 
-colorscheme jellybeans
+colorscheme lucius
 
 
 " Tab系
