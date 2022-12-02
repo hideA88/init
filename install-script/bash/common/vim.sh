@@ -2,6 +2,7 @@
 
 ## vim
 sudo apt install vim
+CUR_DIR=`pwd`
 
 if [ ! -e ~/.vimrc ]; then
     ln -s $CUR_DIR/.vimrc ~/.vimrc
@@ -19,9 +20,12 @@ else
 fi
 
 # sudo したときに自分のvimrcを参照するようにする
-if [ ! -e /root/.vimrc ]; then
-    sudo ln -s ~/.vimrc /root/.vimrc
+sudo ls /root/.vimrc >/dev/null 2>&1
+if [ ! $? = 0 ]; then
+    sudo ln -s $CUR_DIR/.vimrc /root/.vimrc
 fi
-if [ ! -e /root/.vim ]; then
-    sudo ln -s ~/.vim /root/.vim
+
+sudo ls /root/.vim >/dev/null 2>&1
+if [ ! $? = 0 ]; then
+    sudo ln -s ~/.vim/ /root/.vim/
 fi
