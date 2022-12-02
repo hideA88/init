@@ -18,5 +18,10 @@ else
     echo "already installed vim color scheme"
 fi
 
-
-
+# sudo したときに自分のvimrcを参照するようにする
+if [ ! -e /root/.vimrc ]; then
+    sudo ln -s ~/.vimrc /root/.vimrc
+fi
+if [ ! -e /root/.vim ]; then
+    sudo ln -s ~/.vim /root/.vim
+fi
