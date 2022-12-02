@@ -13,13 +13,14 @@ if [ $? = 1 ]; then
 fi
 
 # dockerのリポジトリが追加されていなければ追加
-if [ ! -f /etc/apt/keyrings/docker.gpg ]; then
-  echo "add docker repository"
-  sudo mkdir -p /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+if [ ! -f /usr/share/keyrings/docker.gpg ]; then
+  echo "install docker repo keyring"
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg
+fi
 
+if [ ! -f /etc/apt/sources.list.d/docker.list ]; then
   echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 else
   echo "already added docker repository"
