@@ -1,7 +1,11 @@
 ifeq ($(shell uname), Darwin)
-  SCRIPT_DIR := mac
+  export OS := mac
+  export INSTALL_COMMAND := `brew install`
+  export UPDATE_COMMAND := `brew updte`
 else
-  SCRIPT_DIR := ubuntu
+  export OS := ubuntu
+  export INSTALL_COMMAND := sudo apt-get install
+  export UPDATE_COMMAND := sudo apt-get updte
 endif
 
 .PHONY: init
