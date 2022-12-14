@@ -1,7 +1,7 @@
 ifeq ($(shell uname), Darwin)
   export OS := mac
-  export INSTALL_COMMAND := `brew install`
-  export UPDATE_COMMAND := `brew updte`
+  export INSTALL_COMMAND := brew install
+  export UPDATE_COMMAND := brew updte
 else
   export OS := ubuntu
   export INSTALL_COMMAND := sudo apt-get install
