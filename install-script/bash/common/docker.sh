@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+if [ ${OS} == "mac" ]; then
+  #　mac は　Docker for Macで対応
+  exit 0
+fi
+
 sudo apt-get update
 
 # すでに存在している場合はインストールしない(whichコマンドの結果で存在確認)
