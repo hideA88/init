@@ -83,3 +83,12 @@ fi
 
 sudo apt update  
 sudo apt install google-cloud-sdk 
+
+### firebase cli
+
+which firebase >/dev/null 2>&1
+if [ $? = 0 ]; then
+  curl -sL https://firebase.tools | bash
+else
+  curl -sL https://firebase.tools | upgrade=true bash
+fi
