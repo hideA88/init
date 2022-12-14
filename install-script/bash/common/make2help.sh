@@ -20,7 +20,7 @@ LATEST_VERSION=`curl -s https://api.github.com/repos/${ORG}/${REPO}/releases/lat
 echo $LATEST_VERSION
 
 
-if [ $OS == "ubuntu" ]; then
+if [ $OS == "mac" ]; then
   TARGET="make2help_${LATEST_VERSION}_darwin_arm64.zip"
 else
   TARGET="make2help_${LATEST_VERSION}_linux_amd64.tar.gz"
@@ -28,7 +28,7 @@ fi
 
 wget "https://github.com/${ORG}/${REPO}/releases/download/${LATEST_VERSION}/${TARGET}"
 
-if [ $OS == "ubuntu" ]; then
+if [ $OS == "mac" ]; then
   sudo unzip ${TARGET}
   cd "make2help_${LATEST_VERSION}_darwin_arm64"
 else
