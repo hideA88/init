@@ -2,7 +2,7 @@
 
 ## ubuntu-desktop
 
-1. setup/ubuntu-desktop.md の内容を実施
+1. manual-setup/ubuntu-desktop.md の内容を実施
 2. install-script を実行
 
 ## wsl2(ubuntu)の場合
