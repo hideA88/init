@@ -1,4 +1,4 @@
-#!/bin/fish
+#!fish
 
 fisher -v >/dev/null 2>&1
 if test "$status" != "0" 
