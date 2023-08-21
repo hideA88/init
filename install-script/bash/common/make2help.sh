@@ -37,7 +37,7 @@ else
 fi
 
 sudo chmod +x make2help 
-sudo cp make2help /usr/local/bin
+sudo cp make2help /usr/local/bin/make2help
 
 cd ${CUR_DIR}
 sudo rm -rf ${CUR_DIR=}/tmp
