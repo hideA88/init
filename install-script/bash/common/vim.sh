@@ -1,8 +1,9 @@
 #!/bin/bash
 
 ## vim
-sudo apt install vim
+$INSTALL_COMMAND vim
 CUR_DIR=`pwd`
+echo $CUR_DIR
 
 if [ ! -e ~/.vimrc ]; then
     ln -s $CUR_DIR/.vimrc ~/.vimrc
@@ -19,13 +20,16 @@ else
     echo "already installed vim color scheme"
 fi
 
-# sudo したときに自分のvimrcを参照するようにする
-sudo ls /root/.vimrc >/dev/null 2>&1
-if [ ! $? = 0 ]; then
-    sudo ln -s $CUR_DIR/.vimrc /root/.vimrc
+# sudo したときに自分のvimrcを参照するようにする(macは対応不要)
+if [ ! ${OS} == "mac" ]; then
+    sudo ls /root/.vimrc >/dev/null 2>&1
+    if [ ! $? = 0 ]; then
+        sudo ln -s $CUR_DIR/.vimrc /root/.vimrc
+    fi
+
+    sudo ls /root/.vim >/dev/null 2>&1
+    if [ ! $? = 0 ]; then
+        sudo ln -s ~/.vim/ /root/.vim/
+    fi
 fi
 
-sudo ls /root/.vim >/dev/null 2>&1
-if [ ! $? = 0 ]; then
-    sudo ln -s ~/.vim/ /root/.vim/
-fi
