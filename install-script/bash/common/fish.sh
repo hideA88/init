@@ -8,7 +8,7 @@ if [ $? = 1 ]; then
     ${INSTALL_COMMAND} fish
     which fish | sudo tee -a /etc/shells
 
-    ### Homebrew を使えるように
+    ### fishの中でHomebrew を使えるように
     cmmd="set PATH /opt/homebrew/bin $PATH"
     grep "$cmmd" ~/.config/fish/config.fish >/dev/null 2>&1
     if [ ! $? = 0 ]; then 
@@ -24,7 +24,7 @@ if [ $? = 1 ]; then
     ${INSTALL_COMMAND} fish
   fi
 
-  # default shellをzshに変更
+  # default shellをfishに変更
   chsh -s $(which fish);
 else
   echo "update fish"
