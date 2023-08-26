@@ -1,11 +1,11 @@
 ifeq ($(shell uname), Darwin)
   export OS := mac
   export INSTALL_COMMAND := brew install
-  export UPDATE_COMMAND := brew update
+  export UPDATE_COMMAND := brew upgrade
 else
   export OS := ubuntu
   export INSTALL_COMMAND := sudo apt-get install
-  export UPDATE_COMMAND := sudo apt-get updte
+  export UPDATE_COMMAND := sudo apt-get update
 endif
 
 .PHONY: init
