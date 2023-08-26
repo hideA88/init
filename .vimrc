@@ -18,6 +18,8 @@ set clipboard+=unnamed
 " 見た目系
 " 行番号を表示
 set number
+" 折り返さない
+set nowrap
 " 現在の行を強調表示
 set cursorline
 " 現在の行を強調表示（縦）
@@ -42,7 +44,7 @@ set background=dark
 " シンタックスハイライトの有効化
 syntax enable
 
-colorscheme lucius
+colorscheme desert
 
 
 " Tab系
