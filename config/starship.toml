@@ -1,0 +1,47 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+
+format = """$all"""
+right_format = """$container $docker_context $gcloud $aws """
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold green)"
+
+[directory]
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = "bold blue"
+
+[gcloud]
+format = '[$symbol$active]($style) '
+style = 'bold yellow'
+symbol = ' '
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[git_branch]
+symbol = " "
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user🌱]($style) "
+disabled = false
+show_always = true
+
+[golang]
+format = 'via [$symbol($version)\((mod: $mod_version)\) ]($style)'
+symbol = ''
+
+
