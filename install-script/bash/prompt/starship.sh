@@ -7,8 +7,7 @@ if [ $? = 1 ]; then
     if [ ${OS} == "mac" ]; then
         ${INSTALL_COMMAND} starship
     else
-        sudo apt update
-        ${INSTALL_COMMAND} fish
+        cargo install starship --locked
     fi
     cp ./config/starship.toml ~/.config/starship.toml
 else
@@ -16,8 +15,7 @@ else
         echo "update starship"
         ${UPDATE_COMMAND} starship
     else
-        echo "instelled starship"
-        //TODO implement update command.
+        echo "has been instelled starship"
     fi
 fi
 
