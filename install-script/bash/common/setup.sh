@@ -6,6 +6,12 @@ ${INSTALL_COMMAND} jq
 ${INSTALL_COMMAND} unzip
 ${INSTALL_COMMAND} direnv
 
+# additional tools
+${INSTALL_COMMAND} exa     #lsの代わり
+${INSTALL_COMMAND} bat     #catの代わり
+${INSTALL_COMMAND} fd      #findの代わり
+${INSTALL_COMMAND} ripgrep #grepの代わり
+
 # dock$er上のwebpackでエラーにならないようにするため
 if [ ${OS} == "mac" ]; then
   sudo sysctl -w kern.maxfiles=524288
@@ -28,9 +34,16 @@ if [ ${OS} == "mac" ]; then
   brew tap homebrew/cask-fonts
   ${INSTALL_COMMAND} font-hackgen
   ${INSTALL_COMMAND} font-hackgen-nerd
+
+  ### install Hack nerd font
+  ${INSTALL_COMMAND} font-hack-nerd-font #font-icon
 else
   ### Ricttyのインストール
   sudo apt install -y fonts-roboto fonts-noto fonts-ricty-diminished
+
+  curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.tar.xz
+  //TODO implement install command.
+
 fi
 
 ### SourceHanCodeJP(源ノ各ゴシック)のインストール
