@@ -1,11 +1,11 @@
 ifeq ($(shell uname), Darwin)
-  export OS := mac
-  export INSTALL_COMMAND := brew install
-  export UPDATE_COMMAND := brew upgrade
+    export OS := mac
+    export INSTALL_COMMAND := brew install
+    export UPDATE_COMMAND := brew upgrade
 else
-  export OS := ubuntu
-  export INSTALL_COMMAND := sudo apt-get install
-  export UPDATE_COMMAND := sudo apt-get update
+    export OS := ubuntu
+    export INSTALL_COMMAND := sudo apt-get install
+    export UPDATE_COMMAND := sudo apt-get update
 endif
 
 .PHONY: init
@@ -32,7 +32,9 @@ install-common: setup install-fish install-fisher install-anyenv install-peco in
 ## install and set init shell to fish or update
 install-fish:
 	chmod +x ./install-script/bash/common/fish.sh
+	chmod +x ./install-script/bash/common/startship.sh
 	./install-script/bash/common/fish.sh
+	./install-script/bash/common/starship.sh
 
 .PHONY: install-fisher
 ## install or update fisher and plugins
