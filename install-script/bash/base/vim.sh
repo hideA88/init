@@ -6,7 +6,7 @@ CUR_DIR=`pwd`
 echo $CUR_DIR
 
 if [ ! -e ~/.vimrc ]; then
-    ln -s $CUR_DIR/.vimrc ~/.vimrc
+    ln -s $CUR_DIR/config/.vimrc ~/.vimrc
     git config --global core.editor vim
 else
     echo "aleady exist .vimrc"
@@ -24,7 +24,7 @@ fi
 if [ ! ${OS} == "mac" ]; then
     sudo ls /root/.vimrc >/dev/null 2>&1
     if [ ! $? = 0 ]; then
-        sudo ln -s $CUR_DIR/.vimrc /root/.vimrc
+        sudo ln -s $CUR_DIR/config/.vimrc /root/.vimrc
     fi
 
     sudo ls /root/.vim >/dev/null 2>&1
