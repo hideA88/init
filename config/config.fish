@@ -3,23 +3,15 @@ if status is-interactive
   ### for homebrew(mac)
   if test -d /opt/homebrew/bin
     eval (/opt/homebrew/bin/brew shellenv)
+  else
+    ### for ubuntu
+    fish_add_path ~/.cargo/bin
   end
 
   ###
   if test -d ~/.config/fish/mytheme_colors.fish
     source ~/.config/fish/mytheme_colors.fish
   end
-
-  ### for exa(rich ls command)
-  alias rls='ls'
-  alias ls='exa --icons --git'
-  alias la='exa -a --icons --git'
-  alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
-  alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
-
-  ### for bat
-  alias cat='bat'
-  alias rcat='cat'
 
   ### for direnv
   eval (direnv hook fish)
@@ -40,16 +32,32 @@ if status is-interactive
   ### for npm modules
   fish_add_path ~/.npm_modules/bin
   
-  ### command alias
+  ## command alias
+  ### for docker
   alias dc='docker compose'
+  ### for exa(rich ls command)
+  alias rls='ls'
+  alias ls='exa --icons --git'
+  alias la='exa -a --icons --git'
+  alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
+
+  ### for bat
+  alias cat='bat'
+  alias rcat='cat'
   
   ### for gh
   eval "$(gh completion -s fish)"
   
   
   ### for asdf
-  source /opt/homebrew/opt/asdf/libexec/asdf.fish
-  
+  if test -d /opt/homebrew/bin
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
+  else
+    source ~/.asdf/asdf.fish
+  end
+
+
   
   ### for tmux
   function attach_tmux_session_if_needed
