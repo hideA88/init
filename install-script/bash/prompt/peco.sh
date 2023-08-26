@@ -2,39 +2,6 @@
 
 CUR_DIR=`pwd`
 
-### install ghq
-
-# すでに存在している場合はインストールしない(whichコマンドの結果で存在確認)
-which ghq >/dev/null 2>&1
-if [ $? = 1 ]; then
-    if [ ${OS} == "mac" ]; then
-        ${INSTALL_COMMAND} ghq
-    else
-        mkdir -p ~/tmp
-        cd ~/tmp
-
-        ORG="x-motemen"
-        REPO="ghq"
-
-        LATEST_VERSION=`curl -s https://api.github.com/repos/${ORG}/${REPO}/releases/latest| jq -r .tag_name`
-        TARGET="${REPO}_linux_amd64.zip"
-        wget "https://github.com/${ORG}/${REPO}/releases/download/${LATEST_VERSION}/${TARGET}"
-
-        sudo unzip ${TARGET}
-        cd "${REPO}_linux_amd64"
-        sudo chmod +x ${REPO} 
-        sudo cp ${REPO} /usr/local/bin
-
-        cd ${CUR_DIR}
-        sudo rm -rf ~/tmp
-        read -p "input workspace path: " workPath
-        git config --global ghq.root $workPath/src
-    fi
-else
-    echo "ghq already installed"
-fi 
-
-
 ### install peco
 if [ ${OS} == "mac" ]; then
     ${INSTALL_COMMAND} peco
