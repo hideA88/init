@@ -18,7 +18,7 @@ init:
 help: init
 	@make2help $(MAKE_LIST)
 
-.PHONY: setup
+.PHONY: base
 ## setup basic tools. run first this.
 base:
 	chmod +x ./install-script/bash/base/base.sh
@@ -31,7 +31,7 @@ install-font:
 
 .PHONY: install-all
 ## install all tools
-install-all: base install-font install-fish install-fisher install-asdf install-peco install-docker install-vim install-awsenv install-npm-tools
+install-all: base install-font install-fish install-fisher install-asdf  install-docker install-vim install-awsenv install-npm-tools
 
 .PHONY: install-fish
 ## install and set init shell to fish or update
@@ -47,18 +47,11 @@ install-fisher:
 	chmod +x ./install-script/fish/fisher.fish
 	./install-script/fish/fisher.fish
 
-.PHONY: install-anyenv
-## install anyenv and XXXenv. 
+.PHONY: install-asdf
+## install asdf and tools.. 
 install-asdf:
 	chmod +x ./install-script/bash/base/asdf.sh
 	./install-script/bash/base/asdf.sh
-
-.PHONY: install-peco
-## install peco & ghq
-install-peco:
-	chmod +x ./install-script/bash/base/peco.sh
-	./install-script/bash/base/peco.sh
-
 
 .PHONY: install-docker
 ## install docker& docker-comopse
