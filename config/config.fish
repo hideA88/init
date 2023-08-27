@@ -16,11 +16,18 @@ if status is-interactive
   ### for direnv
   eval (direnv hook fish)
   
-  ### for peco
+  ### for keybinding
   function fish_user_key_bindings
-    bind \cr peco_select_history #Ctrl+r でコマンド履歴
-    bind \c] peco_select_ghq_repository #Ctrl+] でrepositoryのlist
-    bind \ck peco_kill #Ctrl+k でprocessのkill
+    bind \c] __ghq_repository_search
+
+    bind \cb  fzf-checkout-branch
+    bind \cp _fzf_search_processes
+    bind \cr _fzf_search_history
+    bind \co _fzf_search_directory
+    bind \cl _fzf_search_git_log
+    bind \cg _fzf_search_git_status
+
+    bind \cd fzf-docker-continer-name-select
   end
   
   ### for golang
@@ -82,4 +89,28 @@ if status is-interactive
   
   ### for starship(prompt custom)
   starship init fish | source
+end
+
+
+function fzf-checkout-branch
+    set -l branchname (
+        env FZF_DEFAULT_COMMAND='git --no-pager branch -a | grep -v HEAD | sed -e "s/^.* //g"' \
+            fzf --height 70% --prompt "BRANCH NAME>" \
+                --preview "git --no-pager log -20 --color=always {}"
+    )
+    if test -n "$branchname"
+        git checkout (echo "$branchname"| sed "s#remotes/[^/]*/##")
+    end
+end
+
+function fzf-docker-continer-name-select
+    commandline -i (env FZF_DEFAULT_COMMAND="docker ps -a --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Command}}\t{{.RunningFor}}\t{{.Ports}}\t{{.Networks}}'" \
+        fzf --no-sort --height 80% --bind='p:toggle-preview' --preview-window=down:70% \
+            --preview '
+                set -l containername (echo {} | awk -F " " \'{print $2}\');
+                if test "$containername" != "ID"
+                    docker logs --tail 300 $containername
+                end
+            ' | \
+        awk -F " " '{print $2}')
 end
