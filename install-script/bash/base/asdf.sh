@@ -20,13 +20,20 @@ function install_asdf_plugin() {
         asdf global $1 latest
 }
 
+if [ ${OS} == "mac" ]; then
+        # m2 macだとasdf経由でインストールするバイナリが使えないため
+        ${INSTALL_COMMAND} awscli
+        ${INSTALL_COMMAND} google-cloud-sdk
+        ${INSTALL_COMMAND} firebase-cli
+else
+        install_asdf_plugin awscli
+        install_asdf_plugin gcloud
+        install_asdf_plugin firebase
+fi
+
 install_asdf_plugin github-cli
 install_asdf_plugin fzf
 install_asdf_plugin ghq
-
-install_asdf_plugin awscli
-install_asdf_plugin gcloud
-install_asdf_plugin firebase
 
 install_asdf_plugin terraform
 install_asdf_plugin golang
