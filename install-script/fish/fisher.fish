@@ -16,11 +16,9 @@ fisher install edc/bass
 # ディレクトリを遡ることができる。back directory.
 fisher install 0rax/fish-bd
 
-# ctrl-rで
-fisher install oh-my-fish/plugin-peco
-
 # どんな圧縮ファイルも解凍してくれる extract コマンド
 fisher install oh-my-fish/plugin-extract
 
-# ghq コマンドと peco の連携。ghq リポジトリ群を peco で選択して移動できる
-fisher install yoshiori/fish-peco_select_ghq_repository
+fisher install patrickf1/fzf.fish
+
+fisher install decors/fish-ghq
