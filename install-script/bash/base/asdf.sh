@@ -5,7 +5,10 @@ if [ $? = 0 ]; then
         if [ ${OS} == "mac" ]; then
             ${INSTALL_COMMAND} asdf
         else 
-            git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+
+            # asdfのインストールにgolangが必要なので先にインストール
+            ${INSTALL_COMMAND} golang
+            go install github.com/asdf-vm/asdf/cmd/asdf@latest
             mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
         fi
 else
@@ -17,7 +20,7 @@ function install_asdf_plugin() {
 
         asdf plugin add $1
         asdf install $1 latest
-        asdf global $1 latest
+        asdf set -u $1 latest
 }
 
 if [ ${OS} == "mac" ]; then

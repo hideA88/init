@@ -5,6 +5,7 @@ ${INSTALL_COMMAND} curl
 ${INSTALL_COMMAND} jq
 ${INSTALL_COMMAND} unzip
 ${INSTALL_COMMAND} direnv
+${INSTALL_COMMAND} cmake
 
 # additional tools
 
@@ -14,6 +15,8 @@ if [ ${OS} == "mac" ]; then
     ${INSTALL_COMMAND} fd      #findの代わり
     ${INSTALL_COMMAND} ripgrep #grepの代わり
 else
+    ## rust & cargoの最新版のインストール
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     # apt経由の場合、versionが古いのでcargo経由でインストール
     ${INSTALL_COMMAND} cargo
     cargo install exa --locked

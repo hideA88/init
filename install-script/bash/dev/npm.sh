@@ -17,7 +17,6 @@ fi
 
 ## npm lib
 npm install -g yarn
-npm install -g serverless
 npm install -g create-react-app
 npm install -g npm-check-updates
 npm install -g gitbook-cli

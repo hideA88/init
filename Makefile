@@ -4,8 +4,8 @@ ifeq ($(shell uname), Darwin)
     export UPDATE_COMMAND := brew upgrade
 else
     export OS := ubuntu
-    export INSTALL_COMMAND := sudo apt-get install
-    export UPDATE_COMMAND := sudo apt-get update
+    export INSTALL_COMMAND := sudo apt install
+    export UPDATE_COMMAND := sudo apt update
 endif
 
 .PHONY: init
@@ -37,7 +37,7 @@ install-all: base install-font install-fish install-fisher install-asdf  install
 ## install and set init shell to fish or update
 install-fish:
 	chmod +x ./install-script/bash/base/fish.sh
-	chmod +x ./install-script/bash/prompt/startship.sh
+	chmod +x ./install-script/bash/prompt/starship.sh
 	./install-script/bash/base/fish.sh
 	./install-script/bash/prompt/starship.sh
 
@@ -45,7 +45,7 @@ install-fish:
 ## install or update fisher and plugins
 install-fisher:
 	chmod +x ./install-script/fish/fisher.fish
-	./install-script/fish/fisher.fish
+	fish ./install-script/fish/fisher.fish
 
 .PHONY: install-asdf
 ## install asdf and tools.. 
@@ -63,7 +63,7 @@ install-docker:
 ## install vim and vimrc.
 install-vim:
 	chmod +x ./install-script/bash/base/vim.sh
-	./install-script/bash/common/vim.sh
+	./install-script/bash/base/vim.sh
 
 .PHONY: install-awsenv
 ## install cloud cli.
