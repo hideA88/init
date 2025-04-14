@@ -10,8 +10,8 @@ endif
 
 .PHONY: init
 init:
-	chmod +x ./install-script/bash/common/make2help.sh
-	./install-script/bash/common/make2help.sh
+	chmod +x ./install-script/bash/base/make2help.sh
+	./install-script/bash/base/make2help.sh
 
 .PHONY: help
 ## show help

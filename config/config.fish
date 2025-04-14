@@ -8,13 +8,25 @@ if status is-interactive
     fish_add_path ~/.cargo/bin
   end
 
+
   ###
   if test -d ~/.config/fish/mytheme_colors.fish
     source ~/.config/fish/mytheme_colors.fish
   end
 
+
   ### for direnv
   eval (direnv hook fish)
+
+  ### for asdf
+  set -gx ASDF_FORCE_PREPEND yes
+
+  if test -d /opt/homebrew/bin
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
+  else
+    source ~/.asdf/asdf.fish
+  end
+
   
   ### for keybinding
   function fish_user_key_bindings
@@ -43,11 +55,11 @@ if status is-interactive
   ### for docker
   alias dc='docker compose'
   ### for exa(rich ls command)
-  alias rls='ls'
-  alias ls='exa --icons --git'
-  alias la='exa -a --icons --git'
-  alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
-  alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
+  ## alias rls='ls'
+  ## alias ls='exa --icons --git'
+  ## alias la='exa -a --icons --git'
+  ## alias lt='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  ## alias ltl='exa -T -L 3 -a -I "node_modules|.git|.cache" -l --icons'
 
   ### for bat
   alias cat='bat'
@@ -57,38 +69,14 @@ if status is-interactive
   eval "$(gh completion -s fish)"
   
   
-  ### for asdf
-  if test -d /opt/homebrew/bin
-    source /opt/homebrew/opt/asdf/libexec/asdf.fish
-  else
-    source ~/.asdf/asdf.fish
-  end
 
+  ### for gaudiy k8s
+  alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 
-  
-  ### for tmux
-  function attach_tmux_session_if_needed
-    set ID (tmux list-sessions)
-    if test -z "$ID"
-      tmux new-session
-      return
-    end
-  
-    set new_session "Create New Session" 
-    set ID (echo $ID\n$new_session | peco --on-cancel=error | cut -d: -f1)
-    if test "$ID" = "$new_session"
-      tmux new-session
-    else if test -n "$ID"
-      tmux attach-session -t "$ID"
-    end
-  end
-  
-  if test -z $TMUX && status --is-login
-    attach_tmux_session_if_needed
-  end
   
   ### for starship(prompt custom)
   starship init fish | source
+
 end
 
 
@@ -114,3 +102,5 @@ function fzf-docker-continer-name-select
             ' | \
         awk -F " " '{print $2}')
 end
+
+
