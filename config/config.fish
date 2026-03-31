@@ -18,6 +18,10 @@ if status is-interactive
   ### for direnv
   eval (direnv hook fish)
 
+  ### for npm modules (must be before asdf so asdf can prepend its paths)
+  fish_add_path ~/.npm_modules/bin
+  set -gx PATH (npm config get prefix)/bin $PATH
+
   ### for asdf
   # ASDF configuration code
   if test -z $ASDF_DATA_DIR
@@ -56,9 +60,7 @@ if status is-interactive
   fish_add_path ~/workspace/bin
   
   
-  ### for npm modules
-  fish_add_path ~/.npm_modules/bin
-  
+
   ## command alias
   ### for docker
   alias dc='docker compose'
@@ -84,6 +86,10 @@ if status is-interactive
   
   ### for starship(prompt custom)
   starship init fish | source
+
+
+  ### for poetry(python)
+  fish_add_path ~/.local/bin
 
 end
 
